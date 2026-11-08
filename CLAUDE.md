@@ -15,9 +15,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Node **22.23.4 or newer** is required by Astro 7 (pinned in `.nvmrc`). Claude Code's shell can still resolve an older nvm Node from its startup PATH. If `node -v` is below 22.23.4, prefix commands with `export PATH="$HOME/.nvm/versions/node/v22.23.4/bin:$PATH";`.
 - `npm install`: install dependencies
 - `npm run dev`: dev server
-- `npm run build`: production build to `dist/`. **This must pass before you propose any commit.**
+- `npm run build`: type-checks with `astro check`, then builds to `dist/`. A type error (for example, a ja/es UI string missing a key that `en` defines) fails the build. **This must pass before you propose any commit.**
+- `npm run check`: type check only.
 - `npm run preview`: serve `dist/`. The site is at `http://localhost:4321/santino-build/`, not at `/`.
 - There is no test suite or linter yet. A broken-link check before each deploy is planned; the tool is not chosen yet.
+- TypeScript is held at 6.x because `@astrojs/check` 0.9 does not support TypeScript 7 yet.
 
 ## Architecture
 
