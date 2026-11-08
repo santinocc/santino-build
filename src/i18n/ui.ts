@@ -44,6 +44,10 @@ const en = {
 	'meta.projects': 'Software projects by Santino Cervera.',
 	'meta.certifications': 'Certifications earned by Santino Cervera.',
 	'meta.contact': 'How to contact Santino Cervera.',
+	'experience.software': 'Software',
+	'experience.constructionEnergy': 'Construction & energy',
+	'experience.education': 'Education',
+	'date.present': 'Present',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -70,6 +74,10 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'meta.projects': 'サンティーノ・セルベラのソフトウェアプロジェクト。',
 		'meta.certifications': 'サンティーノ・セルベラが取得した資格・認定。',
 		'meta.contact': 'サンティーノ・セルベラへのお問い合わせ方法。',
+		'experience.software': 'ソフトウェア',
+		'experience.constructionEnergy': '建設・エネルギー',
+		'experience.education': '学歴',
+		'date.present': '現在',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -90,5 +98,9 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'meta.projects': 'Proyectos de software de Santino Cervera.',
 		'meta.certifications': 'Certificaciones obtenidas por Santino Cervera.',
 		'meta.contact': 'Cómo contactar a Santino Cervera.',
+		'experience.software': 'Software',
+		'experience.constructionEnergy': 'Construcción y energía',
+		'experience.education': 'Formación',
+		'date.present': 'Actualidad',
 	},
 };

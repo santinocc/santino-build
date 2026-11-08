@@ -1,13 +1,143 @@
 ---
-/** Experience page, shared by every locale. Content arrives in a later step. */
+/** Experience page, shared by every locale: work timeline grouped by sector, then education. */
+import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLocale, useTranslations } from '../../i18n/utils';
+import { byStartDesc, formatRange, getLocalizedCollection } from '../../lib/content';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+const jobs = (await getLocalizedCollection('experience', locale)).sort(byStartDesc);
+const education = (await getLocalizedCollection('education', locale)).sort(byStartDesc);
+const educationWithBody = await Promise.all(
+	education.map(async (entry) => ({ entry, Content: (await render(entry)).Content })),
+);
+
+const groups = [
+	{ id: 'software', heading: t('experience.software'), jobs: jobs.filter((j) => j.data.sector === 'software') },
+	{
+		id: 'construction-energy',
+		heading: t('experience.constructionEnergy'),
+		jobs: jobs.filter((j) => j.data.sector === 'construction-energy'),
+	},
+].filter((group) => group.jobs.length > 0);
+
+const isDraft = [...jobs, ...education].some((entry) => entry.data.translationStatus === 'draft');
+const isEmpty = jobs.length === 0 && education.length === 0;
 ---
 
-<BaseLayout title={t('nav.experience')} description={t('meta.experience')}>
+<BaseLayout title={t('nav.experience')} description={t('meta.experience')} draft={isEmpty ? undefined : isDraft}>
 	<h1>{t('nav.experience')}</h1>
-	<p>{t('page.comingSoon')}</p>
+
+	{isEmpty && <p>{t('page.comingSoon')}</p>}
+
+	{
+		groups.map((group) => (
+			<section aria-labelledby={`h-${group.id}`}>
+				<h2 id={`h-${group.id}`}>{group.heading}</h2>
+				<ol class="timeline">
+					{group.jobs.map((job) => (
+						<li>
+							<article>
+								<h3>{job.data.role}</h3>
+								<p class="meta">
+									<span class="org">{job.data.company}</span>
+									{job.data.location && <span> · {job.data.location}</span>}
+								</p>
+								<p class="dates">{formatRange(job.data.start, job.data.end, locale, t('date.present'))}</p>
+								{job.data.highlights.length > 0 && (
+									<ul>
+										{job.data.highlights.map((item) => (
+											<li>{item}</li>
+										))}
+									</ul>
+								)}
+							</article>
+						</li>
+					))}
+				</ol>
+			</section>
+		))
+	}
+
+	{
+		educationWithBody.length > 0 && (
+			<section aria-labelledby="h-education">
+				<h2 id="h-education">{t('experience.education')}</h2>
+				<ol class="timeline">
+					{educationWithBody.map(({ entry, Content }) => (
+						<li>
+							<article>
+								<h3>{entry.data.program}</h3>
+								<p class="meta">
+									<span class="org">{entry.data.institution}</span>
+									{entry.data.location && <span> · {entry.data.location}</span>}
+								</p>
+								<p class="dates">{formatRange(entry.data.start, entry.data.end, locale, t('date.present'))}</p>
+								<div class="notes">
+									<Content />
+								</div>
+							</article>
+						</li>
+					))}
+				</ol>
+			</section>
+		)
+	}
 </BaseLayout>
+
+<style>
+	section {
+		margin-top: 2.5rem;
+	}
+
+	h2 {
+		font-size: 1.25rem;
+		padding-bottom: 0.25rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.timeline {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.timeline > li + li {
+		margin-top: 1.75rem;
+	}
+
+	h3 {
+		font-size: 1.0625rem;
+		margin: 0;
+	}
+
+	.meta,
+	.dates {
+		margin: 0.125rem 0 0;
+	}
+
+	.org {
+		font-weight: 600;
+	}
+
+	.dates {
+		color: var(--color-muted);
+		font-size: 0.875rem;
+	}
+
+	article ul {
+		margin: 0.5rem 0 0;
+		list-style: disc;
+		padding-left: 1.25rem;
+	}
+
+	article ul li + li {
+		margin-top: 0.25rem;
+	}
+
+	.notes :global(p) {
+		margin: 0.5rem 0 0;
+	}
+</style>

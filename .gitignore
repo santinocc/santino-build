@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# private source material (CVs etc.): never commit, repo is public
+private/
