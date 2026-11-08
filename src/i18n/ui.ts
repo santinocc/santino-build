@@ -37,6 +37,13 @@ const en = {
 	'lang.label': 'Language',
 	'a11y.skipToContent': 'Skip to content',
 	'draft.notice': 'Draft translation, pending review.',
+	'page.comingSoon': 'Content coming soon.',
+	'meta.home': 'Santino Cervera: software engineer. Projects, experience, and background.',
+	'meta.about': 'About Santino Cervera: from civil engineering to software engineering.',
+	'meta.experience': 'Work experience and education of Santino Cervera.',
+	'meta.projects': 'Software projects by Santino Cervera.',
+	'meta.certifications': 'Certifications earned by Santino Cervera.',
+	'meta.contact': 'How to contact Santino Cervera.',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -56,6 +63,13 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'lang.label': '言語',
 		'a11y.skipToContent': '本文へスキップ',
 		'draft.notice': '翻訳の下書きです（確認待ち）。',
+		'page.comingSoon': 'コンテンツは準備中です。',
+		'meta.home': 'サンティーノ・セルベラ：ソフトウェアエンジニア。プロジェクト、経歴、バックグラウンド。',
+		'meta.about': 'サンティーノ・セルベラについて：土木工学からソフトウェアエンジニアへ。',
+		'meta.experience': 'サンティーノ・セルベラの職歴と学歴。',
+		'meta.projects': 'サンティーノ・セルベラのソフトウェアプロジェクト。',
+		'meta.certifications': 'サンティーノ・セルベラが取得した資格・認定。',
+		'meta.contact': 'サンティーノ・セルベラへのお問い合わせ方法。',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -69,5 +83,12 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'lang.label': 'Idioma',
 		'a11y.skipToContent': 'Saltar al contenido',
 		'draft.notice': 'Traducción en borrador, pendiente de revisión.',
+		'page.comingSoon': 'Contenido próximamente.',
+		'meta.home': 'Santino Cervera: ingeniero de software. Proyectos, experiencia y trayectoria.',
+		'meta.about': 'Sobre Santino Cervera: de la ingeniería civil a la ingeniería de software.',
+		'meta.experience': 'Experiencia laboral y formación de Santino Cervera.',
+		'meta.projects': 'Proyectos de software de Santino Cervera.',
+		'meta.certifications': 'Certificaciones obtenidas por Santino Cervera.',
+		'meta.contact': 'Cómo contactar a Santino Cervera.',
 	},
 };

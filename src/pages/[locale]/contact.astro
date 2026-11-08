@@ -1,0 +1,8 @@
+---
+import ContactPage from '../../components/pages/ContactPage.astro';
+import { prefixedLocalePaths } from '../../i18n/utils';
+
+export const getStaticPaths = prefixedLocalePaths;
+---
+
+<ContactPage />

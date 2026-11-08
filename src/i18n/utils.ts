@@ -16,6 +16,14 @@ export const pages = {
 } as const;
 export type PageKey = keyof typeof pages;
 
+/** Locales served under a prefix (/ja/, /es/). */
+export const prefixedLocales = locales.filter((locale) => locale !== defaultLocale);
+
+/** getStaticPaths result for pages under src/pages/[locale]/. */
+export function prefixedLocalePaths() {
+	return prefixedLocales.map((locale) => ({ params: { locale } }));
+}
+
 export function isLocale(value: unknown): value is Locale {
 	return typeof value === 'string' && (locales as readonly string[]).includes(value);
 }

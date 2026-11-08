@@ -1,0 +1,8 @@
+---
+import ProjectsPage from '../../components/pages/ProjectsPage.astro';
+import { prefixedLocalePaths } from '../../i18n/utils';
+
+export const getStaticPaths = prefixedLocalePaths;
+---
+
+<ProjectsPage />

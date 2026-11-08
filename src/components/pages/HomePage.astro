@@ -1,0 +1,13 @@
+---
+/** Home page, shared by every locale. Content arrives in a later step. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLocale, useTranslations } from '../../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+---
+
+<BaseLayout description={t('meta.home')}>
+	<h1>Santino Cervera</h1>
+	<p>{t('page.comingSoon')}</p>
+</BaseLayout>
