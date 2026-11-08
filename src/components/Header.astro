@@ -1,0 +1,81 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLocale, localizedPath, pages, useTranslations, type PageKey } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+const t = useTranslations(locale);
+
+const navPages = Object.keys(pages).filter((page) => page !== 'home') as PageKey[];
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+	<div class="container bar">
+		<a class="site-name" href={localizedPath(locale, 'home')}>Santino Cervera</a>
+		<LanguageSwitcher />
+	</div>
+	<nav class="container" aria-label={t('nav.label')}>
+		<ul>
+			{
+				navPages.map((page) => {
+					const href = localizedPath(locale, page);
+					return (
+						<li>
+							<a href={href} aria-current={href === current ? 'page' : undefined}>
+								{t(`nav.${page}`)}
+							</a>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.site-header {
+		border-bottom: 1px solid var(--color-border);
+		padding-block: 0.75rem;
+	}
+
+	.bar {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem 1rem;
+	}
+
+	.site-name {
+		color: var(--color-text);
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	nav a {
+		display: inline-block;
+		padding-block: 0.25rem;
+		color: var(--color-muted);
+		text-decoration: none;
+	}
+
+	nav a:hover {
+		color: var(--color-text);
+	}
+
+	nav a[aria-current='page'] {
+		color: var(--color-text);
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: 0.35em;
+	}
+</style>

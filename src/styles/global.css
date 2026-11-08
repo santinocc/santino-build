@@ -1,0 +1,117 @@
+/* Global tokens and base styles. Component styles live in each component. */
+
+:root {
+	--color-bg: #ffffff;
+	--color-surface: #f4f4f2;
+	--color-text: #1c1c1a;
+	--color-muted: #5c5c57;
+	--color-border: #deded9;
+	--color-accent: #1f5fbf;
+	--color-notice-bg: #fff4d6;
+	--color-notice-text: #5a4300;
+
+	--font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+		'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic', Meiryo,
+		'Noto Sans JP', sans-serif;
+	/* Japanese fonts first on ja pages, so kanji use Japanese glyph forms, not Chinese ones. */
+	--font-sans-ja: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', 'Yu Gothic',
+		Meiryo, 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+	--content-width: 44rem;
+	--gutter: 1rem;
+
+	color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-bg: #141413;
+		--color-surface: #1f1f1d;
+		--color-text: #ececea;
+		--color-muted: #a3a39e;
+		--color-border: #34342f;
+		--color-accent: #7fb0ff;
+		--color-notice-bg: #3a3015;
+		--color-notice-text: #f3dc9b;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-sans);
+	font-size: 1rem;
+	line-height: 1.6;
+	overflow-wrap: break-word;
+}
+
+:lang(ja) body,
+body:lang(ja) {
+	font-family: var(--font-sans-ja);
+	line-height: 1.8;
+	line-break: strict;
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.3;
+}
+
+a {
+	color: var(--color-accent);
+	text-underline-offset: 0.15em;
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+	width: 100%;
+	max-width: calc(var(--content-width) + 2 * var(--gutter));
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.skip-link {
+	position: absolute;
+	left: var(--gutter);
+	top: -100%;
+	padding: 0.5rem 0.75rem;
+	background: var(--color-text);
+	color: var(--color-bg);
+	z-index: 10;
+}
+
+.skip-link:focus {
+	top: 0.5rem;
+}
+
+.draft-notice {
+	margin: 0;
+	padding: 0.5rem var(--gutter);
+	background: var(--color-notice-bg);
+	color: var(--color-notice-text);
+	font-size: 0.875rem;
+	text-align: center;
+}
