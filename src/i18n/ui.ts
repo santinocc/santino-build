@@ -57,6 +57,9 @@ const en = {
 	'certifications.verify': 'Verify',
 	'certifications.expired': 'Expired',
 	'certifications.expires': 'Expires',
+	'home.focus': 'Current focus',
+	'home.viewProjects': 'See my projects',
+	'home.viewExperience': 'See my experience',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -96,6 +99,9 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'certifications.verify': '認定を確認',
 		'certifications.expired': '有効期限切れ',
 		'certifications.expires': '有効期限',
+		'home.focus': '現在の取り組み',
+		'home.viewProjects': 'プロジェクトを見る',
+		'home.viewExperience': '経歴を見る',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -129,5 +135,8 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'certifications.verify': 'Verificar',
 		'certifications.expired': 'Vencida',
 		'certifications.expires': 'Vence',
+		'home.focus': 'Enfoque actual',
+		'home.viewProjects': 'Ver mis proyectos',
+		'home.viewExperience': 'Ver mi experiencia',
 	},
 };

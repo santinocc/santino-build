@@ -1,13 +1,98 @@
 ---
-/** Home page, shared by every locale. Content arrives in a later step. */
+/** Home page, shared by every locale: introduction, links to Projects and Experience, current focus areas. */
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getLocale, useTranslations } from '../../i18n/utils';
+import { getLocale, localizedPath, useTranslations } from '../../i18n/utils';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+const entry = await getEntry('pages', `${locale}/home`);
+const Content = entry ? (await render(entry)).Content : undefined;
 ---
 
-<BaseLayout description={t('meta.home')}>
-	<h1>Santino Cervera</h1>
-	<p>{t('page.comingSoon')}</p>
+<BaseLayout
+	description={entry?.data.description ?? t('meta.home')}
+	draft={entry ? entry.data.translationStatus === 'draft' : undefined}
+>
+	<h1>{entry?.data.title ?? 'Santino Cervera'}</h1>
+
+	{
+		Content ? (
+			<div class="intro">
+				<Content />
+			</div>
+		) : (
+			<p>{t('page.comingSoon')}</p>
+		)
+	}
+
+	<ul class="cta">
+		<li><a href={localizedPath(locale, 'projects')}>{t('home.viewProjects')}</a></li>
+		<li><a href={localizedPath(locale, 'experience')}>{t('home.viewExperience')}</a></li>
+	</ul>
+
+	{
+		entry?.data.focusAreas && (
+			<section aria-labelledby="focus">
+				<h2 id="focus">{t('home.focus')}</h2>
+				<ul class="focus">
+					{entry.data.focusAreas.map((area) => (
+						<li>{area}</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
 </BaseLayout>
+
+<style>
+	.intro {
+		font-size: 1.125rem;
+	}
+
+	.intro :global(p) {
+		margin: 1rem 0 0;
+	}
+
+	.cta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin: 1.75rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.cta a {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.375rem;
+		background: var(--color-surface);
+		text-decoration: none;
+	}
+
+	.cta a:hover {
+		border-color: currentColor;
+	}
+
+	section {
+		margin-top: 2.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.375rem;
+	}
+
+	.focus {
+		margin: 0.75rem 0 0;
+		padding-left: 1.25rem;
+		list-style: disc;
+	}
+
+	.focus li + li {
+		margin-top: 0.375rem;
+	}
+</style>
