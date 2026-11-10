@@ -1,13 +1,41 @@
 ---
-/** About page, shared by every locale. Content arrives in a later step. */
+/** About page, shared by every locale: the Markdown body of pages/<locale>/about.md. */
+import { getEntry, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLocale, useTranslations } from '../../i18n/utils';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+const entry = await getEntry('pages', `${locale}/about`);
+const Content = entry ? (await render(entry)).Content : undefined;
 ---
 
-<BaseLayout title={t('nav.about')} description={t('meta.about')}>
-	<h1>{t('nav.about')}</h1>
-	<p>{t('page.comingSoon')}</p>
+<BaseLayout
+	title={entry?.data.title ?? t('nav.about')}
+	description={entry?.data.description ?? t('meta.about')}
+	draft={entry ? entry.data.translationStatus === 'draft' : undefined}
+>
+	<h1>{entry?.data.title ?? t('nav.about')}</h1>
+
+	{
+		Content ? (
+			<div class="body">
+				<Content />
+			</div>
+		) : (
+			<p>{t('page.comingSoon')}</p>
+		)
+	}
 </BaseLayout>
+
+<style>
+	.body :global(h2) {
+		margin: 2.25rem 0 0;
+		font-size: 1.375rem;
+	}
+
+	.body :global(p) {
+		margin: 1rem 0 0;
+	}
+</style>
