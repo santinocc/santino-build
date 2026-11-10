@@ -130,7 +130,7 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'projects.role': 'Rol',
 		'projects.repo': 'Código fuente',
 		'projects.demo': 'Demo',
-		'projects.showcase': 'Página del hackathon',
+		'projects.showcase': 'Página del hackatón',
 		'certifications.other': 'Otras certificaciones',
 		'certifications.verify': 'Verificar',
 		'certifications.expired': 'Vencida',
