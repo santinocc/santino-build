@@ -73,7 +73,13 @@ const certifications = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		issuer: z.string(),
-		date: yearMonth,
+		/** Completion date. A day ("2026-04-23") is optional; it orders same-month items but is not shown. */
+		date: z
+			.string()
+			.regex(/^\d{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?)?$/, 'Use "YYYY", "YYYY-MM" or "YYYY-MM-DD"'),
+		/** Expiry date, for certifications that lapse; shown as "Expired …" once past. */
+		expires: yearMonth.optional(),
+		/** Verification page. */
 		url: z.url().optional(),
 		translationStatus,
 	}),

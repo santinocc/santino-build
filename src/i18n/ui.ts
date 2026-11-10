@@ -53,6 +53,10 @@ const en = {
 	'projects.repo': 'Source code',
 	'projects.demo': 'Live demo',
 	'projects.showcase': 'Hackathon showcase',
+	'certifications.other': 'Other certifications',
+	'certifications.verify': 'Verify',
+	'certifications.expired': 'Expired',
+	'certifications.expires': 'Expires',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -88,6 +92,10 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'projects.repo': 'ソースコード',
 		'projects.demo': 'デモ',
 		'projects.showcase': 'ハッカソン作品ページ',
+		'certifications.other': 'その他の資格',
+		'certifications.verify': '認定を確認',
+		'certifications.expired': '有効期限切れ',
+		'certifications.expires': '有効期限',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -117,5 +125,9 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'projects.repo': 'Código fuente',
 		'projects.demo': 'Demo',
 		'projects.showcase': 'Página del hackathon',
+		'certifications.other': 'Otras certificaciones',
+		'certifications.verify': 'Verificar',
+		'certifications.expired': 'Vencida',
+		'certifications.expires': 'Vence',
 	},
 };

@@ -1,13 +1,113 @@
 ---
-/** Certifications page, shared by every locale. Content arrives in a later step. */
+/**
+ * Certifications page, shared by every locale.
+ * Anthropic certificates come first; anything from another issuer goes under "Other certifications".
+ */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLocale, useTranslations } from '../../i18n/utils';
+import { formatYearMonth, getLocalizedCollection } from '../../lib/content';
 
 const locale = getLocale(Astro.currentLocale);
 const t = useTranslations(locale);
+
+const PRIMARY_ISSUER = 'Anthropic';
+/** Build date as "YYYY-MM-DD"; an expiry month earlier than or equal to this one has lapsed. */
+const today = new Date().toISOString().slice(0, 10);
+
+const entries = (await getLocalizedCollection('certifications', locale)).sort(
+	(a, b) => b.data.date.localeCompare(a.data.date) || a.data.title.localeCompare(b.data.title),
+);
+const primary = entries.filter((entry) => entry.data.issuer === PRIMARY_ISSUER);
+const other = entries.filter((entry) => entry.data.issuer !== PRIMARY_ISSUER);
+
+const groups = [
+	{ id: 'anthropic', heading: PRIMARY_ISSUER, items: primary, showIssuer: false },
+	{ id: 'other', heading: t('certifications.other'), items: other, showIssuer: true },
+].filter((group) => group.items.length > 0);
+
+const isDraft = entries.some((entry) => entry.data.translationStatus === 'draft');
 ---
 
-<BaseLayout title={t('nav.certifications')} description={t('meta.certifications')}>
+<BaseLayout
+	title={t('nav.certifications')}
+	description={t('meta.certifications')}
+	draft={entries.length ? isDraft : undefined}
+>
 	<h1>{t('nav.certifications')}</h1>
-	<p>{t('page.comingSoon')}</p>
+
+	{entries.length === 0 && <p>{t('page.comingSoon')}</p>}
+
+	{
+		groups.map((group) => (
+			<section aria-labelledby={`c-${group.id}`}>
+				<h2 id={`c-${group.id}`}>{group.heading}</h2>
+				<ul class="certs">
+					{group.items.map(({ data }) => {
+						const expiry = data.expires && {
+							label: data.expires < today ? t('certifications.expired') : t('certifications.expires'),
+							date: formatYearMonth(data.expires, locale),
+						};
+						const meta = [
+							group.showIssuer && data.issuer,
+							formatYearMonth(data.date, locale),
+							expiry && `${expiry.label} ${expiry.date}`,
+						].filter(Boolean);
+						return (
+							<li>
+								<span class="title">{data.title}</span>
+								<span class="meta">{meta.join(' · ')}</span>
+								{data.url && (
+									<a href={data.url} rel="noopener" aria-label={`${t('certifications.verify')}: ${data.title}`}>
+										{t('certifications.verify')}
+									</a>
+								)}
+							</li>
+						);
+					})}
+				</ul>
+			</section>
+		))
+	}
 </BaseLayout>
+
+<style>
+	section {
+		margin-top: 2.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.375rem;
+	}
+
+	.certs {
+		margin: 1rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.certs li {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.125rem 1rem;
+		padding: 0.75rem 0;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.title {
+		font-weight: 600;
+	}
+
+	.meta {
+		grid-column: 1;
+		color: var(--color-muted);
+		font-size: 0.875rem;
+	}
+
+	.certs a {
+		grid-column: 2;
+		grid-row: 1 / span 2;
+		align-self: center;
+		font-size: 0.9375rem;
+	}
+</style>
