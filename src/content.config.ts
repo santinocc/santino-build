@@ -28,8 +28,12 @@ const projects = defineCollection({
 			role: z.string(),
 			/** When the project was built or launched; used for ordering. */
 			date: yearMonth,
+			/** Hackathon or event the project was built at, e.g. "ETHGlobal Tokyo 2026". */
+			event: z.string().optional(),
 			repo: z.url().optional(),
 			demo: z.url().optional(),
+			/** Event showcase or submission page. */
+			showcase: z.url().optional(),
 			cover: image().optional(),
 			coverAlt: z.string().optional(),
 			translationStatus,

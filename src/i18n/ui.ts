@@ -48,6 +48,11 @@ const en = {
 	'experience.constructionEnergy': 'Construction & energy',
 	'experience.education': 'Education',
 	'date.present': 'Present',
+	'projects.stack': 'Stack',
+	'projects.role': 'Role',
+	'projects.repo': 'Source code',
+	'projects.demo': 'Live demo',
+	'projects.showcase': 'Hackathon showcase',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -78,6 +83,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'experience.constructionEnergy': '建設・エネルギー',
 		'experience.education': '学歴',
 		'date.present': '現在',
+		'projects.stack': '技術スタック',
+		'projects.role': '役割',
+		'projects.repo': 'ソースコード',
+		'projects.demo': 'デモ',
+		'projects.showcase': 'ハッカソン作品ページ',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -102,5 +112,10 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'experience.constructionEnergy': 'Construcción y energía',
 		'experience.education': 'Formación',
 		'date.present': 'Actualidad',
+		'projects.stack': 'Tecnologías',
+		'projects.role': 'Rol',
+		'projects.repo': 'Código fuente',
+		'projects.demo': 'Demo',
+		'projects.showcase': 'Página del hackathon',
 	},
 };
