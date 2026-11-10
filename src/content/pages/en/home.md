@@ -9,6 +9,6 @@ focusAreas:
 translationStatus: approved
 ---
 
-I'm a software engineer with a background in civil engineering. I worked on construction and offshore energy projects in Mexico, Singapore, and San Francisco, then spent three years as a software engineer at JPMorgan Chase.
+I'm a software engineer with a background in civil engineering. I worked on construction and offshore energy projects in Mexico, Singapore, and San Francisco, then spent three years as a software engineer at JPMorgan Chase, building back-end microservices in Java and Spring Boot and running them on AWS, with infrastructure in Terraform.
 
 In 2026 I founded Chefini, a recipe marketplace for Mexico, the United States, and Japan, and built it end to end, from the React Native app to Stripe Connect payments. I also build at hackathons: at ETHGlobal Tokyo 2026 I built Sapore Pay, a chef onboarding app with on-chain identity.
