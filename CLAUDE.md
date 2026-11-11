@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-`PROJECT_BRIEF.md` is the source of truth for scope, sitemap, content, and done criteria. Read it at the start of every session. The step-by-step build plan was agreed in conversation: scaffold → locale config → i18n helpers → base layout → content schemas → page routes → English content → ja/es drafts → contact form → images → link check + deploy → README → final checks. Done: steps 1–9, 11 and 12 (all pages in en/ja/es, contact form, link check, deploy, README); the site is live at https://santinocc.github.io/santino-build/. Step 10 (images) was skipped for now. Left: final checks (13). ja/es content is still `draft` pending Santino’s review. `README.md` explains run, build, deploy, and content editing.
+`PROJECT_BRIEF.md` is the source of truth for scope, sitemap, content, and done criteria. Read it at the start of every session. The step-by-step build plan was agreed in conversation: scaffold → locale config → i18n helpers → base layout → content schemas → page routes → English content → ja/es drafts → contact form → images → link check + deploy → README → final checks. All 13 steps are done; the site is live at https://santinocc.github.io/santino-build/ and LinkedIn links to it. Final checks passed: Lighthouse 100 on every category, 375px layout, language switcher, no broken links. Images: project covers (`cover`/`coverAlt` in the projects schema; square images render small as logos) and a cooking photo on About, all in `src/assets/`. Skipped by choice: a headshot, and a redirect from the old site at https://santinocc.github.io/ (both sites are live). ja/es content stays `draft` until Santino asks otherwise. `README.md` explains run, build, deploy, and content editing.
 
 ## What this is
 
@@ -40,7 +40,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - One base layout that sets `<html lang>`, `hreflang` alternates (plus `x-default`), and meta tags. It uses a system font stack with Japanese glyphs (Hiragino Sans, Yu Gothic, Noto Sans JP) and no web-font downloads.
 - Content Collections with schemas (projects, experience, education, certifications, page copy), stored in per-locale folders such as `src/content/projects/ja/`. Each entry has `translationStatus: draft | approved`.
 - English pages in `src/pages/` and ja/es generated from `src/pages/[locale]/`. Both render shared page components from `src/components/pages/`, so each page's markup exists once.
-- Static output with no client JavaScript; the contact form is a plain HTML POST to Formspree. Images, when added, go through Astro's image handling.
+- Static output with no client JavaScript; the contact form is a plain HTML POST to Formspree. Images live in `src/assets/` and go through Astro's image handling (`<Image>` or Markdown image syntax); never put them in `public/`, which skips optimization. Check photos for GPS metadata before committing: the repo is public.
 
 ## Git workflow
 
