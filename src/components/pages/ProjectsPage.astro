@@ -1,5 +1,6 @@
 ---
 /** Projects page, shared by every locale: newest project first. */
+import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getLocale, useTranslations } from '../../i18n/utils';
@@ -25,7 +26,7 @@ const isDraft = entries.some((entry) => entry.data.translationStatus === 'draft'
 
 	{
 		projects.map(({ entry, Content }) => {
-			const { title, summary, stack, role, date, event, repo, demo, showcase } = entry.data;
+			const { title, summary, stack, role, date, event, repo, demo, showcase, cover, coverAlt } = entry.data;
 			const links = [
 				demo && { href: demo, label: t('projects.demo') },
 				repo && { href: repo, label: t('projects.repo') },
@@ -35,6 +36,15 @@ const isDraft = entries.some((entry) => entry.data.translationStatus === 'draft'
 				<article aria-labelledby={`p-${entry.id}`}>
 					<h2 id={`p-${entry.id}`}>{title}</h2>
 					<p class="meta">{[event, formatYearMonth(date, locale)].filter(Boolean).join(' · ')}</p>
+					{cover && (
+						<Image
+							class:list={['cover', { logo: cover.width === cover.height }]}
+							src={cover}
+							alt={coverAlt ?? ''}
+							widths={[320, 640]}
+							sizes="(max-width: 360px) 100vw, 20rem"
+						/>
+					)}
 					<p class="summary">{summary}</p>
 					<dl>
 						<dt>{t('projects.role')}</dt>
@@ -84,6 +94,21 @@ const isDraft = entries.some((entry) => entry.data.translationStatus === 'draft'
 		margin: 0.25rem 0 0;
 		color: var(--color-muted);
 		font-size: 0.875rem;
+	}
+
+	.cover {
+		display: block;
+		width: 100%;
+		max-width: 20rem;
+		height: auto;
+		margin-top: 1rem;
+		border: 1px solid var(--color-border);
+		border-radius: 0.5rem;
+	}
+
+	/* Square images are logos: show them small. */
+	.cover.logo {
+		max-width: 6rem;
 	}
 
 	.summary {

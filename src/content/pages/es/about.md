@@ -23,3 +23,5 @@ Actualmente vivo en Japón.
 ## Intereses
 
 Hablo español (nativo) e inglés, y estudio japonés (JLPT N4). He vivido en México, Japón, Singapur y Estados Unidos. También disfruto cocinar.
+
+![Un platillo que cociné: atún sellado con costra de ajonjolí, brócoli rostizado, cebollita asada y salsa de soya.](../../../assets/about/seared-ahi-tuna.jpeg)

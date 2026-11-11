@@ -4,6 +4,8 @@ summary: "A recipe marketplace for Mexico, the US, and Japan, where home cooks d
 stack: [React Native (Expo), TypeScript, Node.js/Express, MongoDB, MongoDB Atlas Vector Search, Python (FastAPI), Stripe Connect, AWS S3, Railway]
 role: Founder & full stack engineer
 date: "2026-01"
+cover: ../../../assets/projects/chefini-logo.png
+coverAlt: "Chefini logo: a steaming cooking pot inside a circle, with the words Descubre, Cocina, Comparte (Discover, Cook, Share)."
 translationStatus: approved
 ---
 

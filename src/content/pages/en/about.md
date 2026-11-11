@@ -23,3 +23,5 @@ I'm now based in Japan.
 ## Interests
 
 I speak Spanish (native) and English, and I'm studying Japanese (JLPT N4). I've lived in Mexico, Japan, Singapore, and the United States. I also enjoy cooking.
+
+![A dish I cooked: sesame-crusted seared ahi tuna with roasted broccoli, a grilled green onion, and soy sauce.](../../../assets/about/seared-ahi-tuna.jpeg)

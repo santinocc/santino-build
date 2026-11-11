@@ -7,6 +7,8 @@ date: "2026-09"
 event: ETHGlobal Tokyo 2026
 repo: https://github.com/santinocc/sapore-pay
 showcase: https://ethglobal.com/showcase/chef-id-sapore-pay-w3khx
+cover: ../../../assets/projects/sapore-logo.png
+coverAlt: "Sapore logo: a white letter S with a red dot on a black background."
 translationStatus: approved
 ---
 

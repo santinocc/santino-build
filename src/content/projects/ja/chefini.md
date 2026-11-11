@@ -4,6 +4,8 @@ summary: "メキシコ、米国、日本向けのレシピマーケットプレ�
 stack: [React Native (Expo), TypeScript, Node.js/Express, MongoDB, MongoDB Atlas Vector Search, Python (FastAPI), Stripe Connect, AWS S3, Railway]
 role: 創業者・フルスタックエンジニア
 date: "2026-01"
+cover: ../../../assets/projects/chefini-logo.png
+coverAlt: "Chefiniのロゴ：円の中に湯気の立つ鍋と、Descubre・Cocina・Comparte（見つける・作る・共有する）の文字。"
 translationStatus: draft
 ---
 

@@ -38,4 +38,12 @@ const Content = entry ? (await render(entry)).Content : undefined;
 	.body :global(p) {
 		margin: 1rem 0 0;
 	}
+
+	.body :global(img) {
+		display: block;
+		width: 100%;
+		max-width: 16rem;
+		height: auto;
+		border-radius: 0.5rem;
+	}
 </style>

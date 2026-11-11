@@ -5,6 +5,8 @@ stack: [Python (FastAPI), PostgreSQL, Docker, Kubernetes (kind), Kustomize, Helm
 role: Solo developer
 date: "2026-11"
 repo: https://github.com/santinocc/k8s-slo-pipeline-demo
+cover: ../../../assets/projects/k8s-grafana-dashboard.png
+coverAlt: "Grafana dashboard for the SLO: 100% availability, full error budget, zero burn rate and no alerts firing, with charts of request rate, latency, and API replicas."
 translationStatus: approved
 ---
 

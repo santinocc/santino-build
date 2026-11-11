@@ -34,9 +34,14 @@ const projects = defineCollection({
 			demo: z.url().optional(),
 			/** Event showcase or submission page. */
 			showcase: z.url().optional(),
+			/** Project image, relative to the entry, e.g. ../../../assets/projects/x.png. */
 			cover: image().optional(),
+			/** Required with `cover`: describes the image for screen readers. */
 			coverAlt: z.string().optional(),
 			translationStatus,
+		}).refine((data) => !data.cover || data.coverAlt, {
+			message: 'A project with a cover image needs coverAlt text.',
+			path: ['coverAlt'],
 		}),
 });
 
