@@ -18,7 +18,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run build`: type-checks with `astro check`, then builds to `dist/`. A type error (for example, a ja/es UI string missing a key that `en` defines) fails the build. **This must pass before you propose any commit.**
 - `npm run check`: type check only.
 - `npm run preview`: serve `dist/`. The site is at `http://localhost:4321/santino-build/`, not at `/`.
-- There is no test suite or linter yet. A broken-link check before each deploy is planned; the tool is not chosen yet.
+- `npm run check:links`: after a build, checks every internal link and asset in `dist/` (`scripts/check-links.mjs`, no dependencies). It also fails on root-relative URLs that skip the base path. External links are not checked. Keep its `SITE` and `BASE` constants in sync with `astro.config.mjs`.
+- There is no test suite or linter yet.
+- **Deploy:** `.github/workflows/deploy.yml` runs on every push to `main`: `npm ci`, `npm run build`, `npm run check:links`, then deploys `dist/` to GitHub Pages. A failing build or link check stops the deploy. The repo setting Pages → Source must be "GitHub Actions".
 - TypeScript is held at 6.x because `@astrojs/check` 0.9 does not support TypeScript 7 yet.
 
 ## Architecture
@@ -60,4 +62,5 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Content constraints
 
 - Do not carry over these items from the old site: the social placeholder links (Facebook, Twitter, Instagram, YouTube), the emoji hobbies section, and the standalone Blockchain page. The Blockchain content moves into the Sapore project entry.
-- Open or undecided items: the contact form service, the link-check tool, the logo, a blog or build-log section, analytics (none in v1), and the custom domain. Do not implement any of these without asking.
+- Decided: the contact form uses Formspree (form ID in `src/config.ts`, public by design); the link check is `scripts/check-links.mjs`.
+- Open or undecided items: the logo, a blog or build-log section, analytics (none in v1), and the custom domain. Do not implement any of these without asking.
