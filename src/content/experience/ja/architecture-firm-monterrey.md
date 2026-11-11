@@ -1,5 +1,5 @@
 ---
-company: 建築設計事務所
+company: Saul Gonzalez（建築設計事務所）
 role: 現場監督
 sector: construction-energy
 location: メキシコ・モンテレイ

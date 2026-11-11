@@ -6,7 +6,7 @@ translationStatus: draft
 
 ## Ingeniería civil, construcción y energía
 
-Estudié Ingeniería Civil en el Tecnológico de Monterrey y me gradué en primer lugar de mi generación. Durante la carrera pasé un verano como ingeniero de campo en entrenamiento en Schlumberger, y mi primer trabajo después de graduarme fue como supervisor de obra en un despacho de arquitectura en Monterrey.
+Estudié Ingeniería Civil en el Tecnológico de Monterrey y me gradué en primer lugar de mi generación. Durante la carrera pasé un verano como ingeniero de campo en entrenamiento en Schlumberger, y mi primer trabajo después de graduarme fue como supervisor de obra en Saul Gonzalez, un despacho de arquitectura en Monterrey.
 
 En 2015 me mudé a Japón para iniciar una maestría en Ingeniería Sísmica en la Universidad de Tokio. En 2017 me transferí a la Universidad Nacional de Singapur, donde terminé una maestría en Tecnología Costa Afuera con especialidad en Ingeniería Petrolera, e hice prácticas en INTECSEA en ductos marinos.
 

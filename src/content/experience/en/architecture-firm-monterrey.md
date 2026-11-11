@@ -1,5 +1,5 @@
 ---
-company: Architecture firm
+company: Saul Gonzalez (architecture firm)
 role: Site Supervisor
 sector: construction-energy
 location: Monterrey, Mexico

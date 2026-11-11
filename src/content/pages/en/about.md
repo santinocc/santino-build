@@ -6,7 +6,7 @@ translationStatus: approved
 
 ## Civil engineering, construction, and energy
 
-I studied civil engineering at Tecnológico de Monterrey in Mexico and graduated first in my class. During the degree I spent a summer as a field engineer trainee with Schlumberger, and my first job after graduating was as a site supervisor for an architecture firm in Monterrey.
+I studied civil engineering at Tecnológico de Monterrey in Mexico and graduated first in my class. During the degree I spent a summer as a field engineer trainee with Schlumberger, and my first job after graduating was as a site supervisor at Saul Gonzalez, an architecture firm in Monterrey.
 
 In 2015 I moved to Japan to start an M.Sc. in Earthquake Engineering at the University of Tokyo. In 2017 I transferred to the National University of Singapore, where I completed an M.Sc. in Offshore Technology with a specialization in petroleum engineering, and interned with INTECSEA on offshore pipelines.
 

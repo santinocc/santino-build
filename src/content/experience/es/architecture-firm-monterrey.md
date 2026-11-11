@@ -1,5 +1,5 @@
 ---
-company: Despacho de arquitectura
+company: Saul Gonzalez (despacho de arquitectura)
 role: Supervisor de obra
 sector: construction-energy
 location: Monterrey, México
