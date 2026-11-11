@@ -1,10 +1,10 @@
 ---
 title: Contacto
-description: "Cómo contactar a Santino Cervera: LinkedIn y GitHub."
+description: "Cómo contactar a Santino Cervera: formulario de contacto, LinkedIn y GitHub."
 translationStatus: draft
 ---
 
-La mejor forma de contactarme es un mensaje por LinkedIn. También puedes ver mi código en GitHub.
+Puedes enviarme un mensaje con el formulario de abajo o escribirme por LinkedIn. Mi código está en GitHub.
 
 - [LinkedIn](https://www.linkedin.com/in/santinocc/)
 - [GitHub](https://github.com/santinocc)

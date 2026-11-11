@@ -60,6 +60,12 @@ const en = {
 	'home.focus': 'Current focus',
 	'home.viewProjects': 'See my projects',
 	'home.viewExperience': 'See my experience',
+	'contact.formHeading': 'Send a message',
+	'contact.name': 'Name',
+	'contact.email': 'Email',
+	'contact.message': 'Message',
+	'contact.send': 'Send',
+	'contact.privacy': 'Messages are delivered through Formspree. Your email address is used only to reply to you.',
 } as const;
 
 export type UiKey = keyof typeof en;
@@ -102,6 +108,12 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'home.focus': '現在の取り組み',
 		'home.viewProjects': 'プロジェクトを見る',
 		'home.viewExperience': '経歴を見る',
+		'contact.formHeading': 'メッセージを送る',
+		'contact.name': 'お名前',
+		'contact.email': 'メールアドレス',
+		'contact.message': 'メッセージ',
+		'contact.send': '送信',
+		'contact.privacy': 'メッセージはFormspree経由で届きます。メールアドレスは返信のためだけに使います。',
 	},
 	// DRAFT: machine-drafted, pending review.
 	es: {
@@ -138,5 +150,11 @@ export const ui: Record<Locale, Record<UiKey, string>> = {
 		'home.focus': 'Enfoque actual',
 		'home.viewProjects': 'Ver mis proyectos',
 		'home.viewExperience': 'Ver mi experiencia',
+		'contact.formHeading': 'Envíame un mensaje',
+		'contact.name': 'Nombre',
+		'contact.email': 'Correo electrónico',
+		'contact.message': 'Mensaje',
+		'contact.send': 'Enviar',
+		'contact.privacy': 'Los mensajes se envían a través de Formspree. Tu correo solo se usa para responderte.',
 	},
 };
