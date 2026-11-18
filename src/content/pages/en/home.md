@@ -5,7 +5,7 @@ focusAreas:
   - "Building applications with LLMs: the Claude API, MCP, and Claude Code"
   - "Full stack TypeScript: React and React Native, Node.js"
   - "Web3 identity and payments: World ID, ENS, and Solidity"
-  - "Learning projects in Python (LLM tools), Kotlin, Go, and Ruby on Rails"
+  - "Learning projects, each a public repo: Go (finished), then satellite-imagery GIS, Rust, and a Python RAG assistant"
 translationStatus: approved
 ---
 

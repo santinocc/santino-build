@@ -5,7 +5,7 @@ focusAreas:
   - "LLMを使ったアプリケーション開発：Claude API、MCP、Claude Code"
   - "TypeScriptでのフルスタック開発：React、React Native、Node.js"
   - "Web3のIDと決済：World ID、ENS、Solidity"
-  - "学習プロジェクト：Python（LLMツール）、Kotlin、Go、Ruby on Rails"
+  - "学習プロジェクト（それぞれ公開リポジトリ）：Go（完了）、次に衛星画像のGIS、Rust、PythonのRAGアシスタント"
 translationStatus: draft
 ---
 
