@@ -99,6 +99,10 @@ const pages = defineCollection({
 		description: z.string(),
 		/** Home page: short list of current focus areas. */
 		focusAreas: z.array(z.string()).optional(),
+		/** Projects page: work in progress, shown above the finished projects. No repo links. */
+		building: z.array(z.object({ title: z.string(), summary: z.string() })).optional(),
+		/** Projects page: the next two or so projects, from the learning-projects order. */
+		nextUp: z.array(z.object({ title: z.string(), summary: z.string() })).optional(),
 		translationStatus,
 	}),
 });
